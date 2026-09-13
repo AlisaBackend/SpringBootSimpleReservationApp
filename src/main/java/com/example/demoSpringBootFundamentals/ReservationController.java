@@ -1,6 +1,7 @@
 package com.example.demoSpringBootFundamentals;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
@@ -12,9 +13,12 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping 
-    public String getReservationById() {
-        return reservationService.getReservationById();
+    @GetMapping("/{id}")
+    public Reservation getReservationById(
+       @PathVariable("id") Long id
+    ) {
+        System.out.println("lod called method");
+        return reservationService.getReservationById(id);
     }
 
     
